@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+
+{% block encabezado %}
+{% include "encabezado.html" %}
+{% endblock %}
+
+{% block contenido %}
+<!-- <div class="m-5 border rounded">
+    
+    <div class="card" style="width: 18rem;">
+        <img src="../media/{{producto.imagenProducto}}" class="card-img-top" width="200" height="200" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{producto.nombreProducto}}</h5>
+            <p class="card-text">{{producto.descripcionProducto}}</p>
+            <h5 class="card-title">{{producto.precioProducto}}</h5>
+        </div>
+    </div>
+    
+</div> -->
+
+<section class="products" id="products" href="/productos/">
+    <h1 class="heading" name="pastillaje" >Tortas en<span>pastillaje</span></h1>
+    <div class="swiper product-slider">
+        <div class="swiper-wrapper">
+            {% for producto in listaProductos %}
+            <div class="swiper-slide box">
+                <img class="tamañoImg" src="../media/{{producto.imagenProducto}}" alt="">
+                <h3>{{producto.nombreProducto}}</h3>
+                <div class="price">{{producto.descripcionProducto}}</div>
+                <div class="price">{{producto.precioProducto|floatformat:2}}</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- <div class="swiper product-slider">
+        <div class="swiper-wrapper">
+            {% for producto in listaProductos %}
+            <div class="swiper-slide box">
+                <img class="tamañoImg" src="../media/{{producto.imagenProducto}}" alt="">
+                <h3>{{producto.nombreProducto}}</h3>
+                <div class="price">{{producto.descripcionProducto}}</div>
+                <div class="price">{{producto.precioProducto|floatformat:2}}</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div> -->
+</section>
+{% endblock %}
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}

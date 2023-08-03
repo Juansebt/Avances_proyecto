@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+
+{% block encabezado %}
+{% include "encabezado.html" %}
+{% endblock %}
+
+{% block contenido %}
+<section class="products" id="products" href="/productos/">
+    <h1 class="heading" name="pastillaje">Tortas en<span>pastillaje</span></h1>
+    <div class="swiper product-slider">
+        <div class="swiper-wrapper">
+            {% for producto in listaProductos %}
+            <div class="swiper-slide box">
+                <img class="tamañoImg" src="../media/{{producto.imagenProducto}}" alt="">
+                <h3>{{producto.nombreProducto}}</h3>
+                <div class="price">{{producto.descripcionProducto}}</div>
+                <div class="price">{{producto.precioProducto}}</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="../templates/usuario/login.html" class="btn">Agregar al carro</a>
+            </div>
+            {% endfor %}
+
+</section>
+{% endblock %}
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}

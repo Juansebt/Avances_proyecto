@@ -1,0 +1,51 @@
+{% load static %}
+<img src="{%static '../static/images/logo.jpg' %}" alt="" style="width: 7%; border-radius: 50%;">
+<a href="/inicio/" class="logo">D' Albas </a>
+
+<nav class="navbar" id="menu">
+  <a href="/inicioCliente/">Inicio</a>
+  <a href="/nosotrosCliente/">Acerca de</a>
+  <div class="dropdown">
+    <a onclick="toggleDropdown1()" class="nav-link dropdown-toggle" href="//" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Productos
+    </a>
+    <ul id="dropdown-content1" class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+      <li><a class="dropdown-item" href="/vistaProductosCliente/">Tortas de Pastillaje</a></li>
+      <li><a class="dropdown-item" href="//">Tortas en Crema</a></li>
+      <li><a class="dropdown-item" href="//">Cupcakes</a></li>
+      <li><a class="dropdown-item" href="//">Galletas</a></li>
+    </ul>
+  </div>
+  <div class="dropdown">
+    <a onclick="toggleDropdown2()" class="nav-link dropdown-toggle" href="//" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Pedidos
+    </a>
+    <ul id="dropdown-content2" class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+      <li><a class="dropdown-item" href="/registrarPedidos/">Realizar pedidos</a></li>
+      <li><a class="dropdown-item" href="//">Mis pedidos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- iconos -->
+
+<div class="icons">
+  <div class="fas fa-bars" id="menu-btn"></div>
+  <div class="fas fa-search" id="search-btn"></div>
+  <div class="fas fa-shopping-cart" id="login-btn"></div>
+  <div class="fas fa-user" id="cart-btn"><a href="/vistaLogin/"> Mi perfil</a></div>
+</div>
+
+<!-- El formulario de busqueda -->
+
+<form action="" class="search-form">
+  <input type="search" id="search-box" placeholder="buscar aquí...">
+  <label for="search-box" class="fas fa-search"></label>
+</form>
+
+<!-- formulario de no iniciar sesión -->
+{% comment %} <form action="" class="login-form active">
+  <h3>TU CARRITO DE COMPRAS</h3>
+  <hr>
+  <p>No hay productos en el carrito</p>
+</form> {% endcomment %}
