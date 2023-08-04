@@ -367,9 +367,22 @@ def nosotrosCliente(request):
     else:
         retorno = {"mensaje": "Debe ingresar con sus credenciales"}
         return render(request, "login.html", retorno)
+    
+    
+def nosotrosAdministrador(request):
+    if request.user.is_authenticated:
+        return render(request, "administrador/nosotros.html")
+    else:
+        retorno = {"mensaje": "Debe ingresar con sus credenciales"}
+        return render(request, "login.html", retorno)
 
 
-def vistaProductosCliente(request):
+
+
+
+
+
+def mostrarProductosCliente (request):
     if request.user.is_authenticated:
         return render(request, "cliente/productos.html")
     else:
@@ -377,7 +390,7 @@ def vistaProductosCliente(request):
         return render(request, "login.html", retorno)
 
 
-def mostrarProductosCliente(request):
+def vistaProductosCliente(request):
     try:
         productos = Productos.objects.all()
         mensaje = ""
@@ -386,6 +399,67 @@ def mostrarProductosCliente(request):
         mensaje = f"Problemas al alistar los productos {error}"
     retorno = {"mensaje": mensaje, "listaProductos": productos}
     return render(request, "cliente/productos.html", retorno)
+
+
+
+
+
+def mostrarProductosCremaCliente(request):
+    if request.user.is_authenticated:
+        return render(request, "cliente/productosCrema.html")
+    else:
+        retorno = {"mensaje": "Debe ingresar con sus credenciales"}
+        return render(request, "login.html", retorno)
+
+
+def vistaProductosCremaCliente(request):
+    try:
+        productos = Productos.objects.all()
+        mensaje = ""
+        # print(productos)
+    except Error as error:
+        mensaje = f"Problemas al alistar los productos {error}"
+    retorno = {"mensaje": mensaje, "listaProductos": productos}
+    return render(request, "cliente/productosCrema.html", retorno)
+
+
+def mostrarProductosCupcakeCliente(request):
+    if request.user.is_authenticated:
+        return render(request, "cliente/productosCupcakes.html")
+    else:
+        retorno = {"mensaje": "Debe ingresar con sus credenciales"}
+        return render(request, "login.html", retorno)
+
+
+def vistaProductosCupcakeCliente(request):
+    try:
+        productos = Productos.objects.all()
+        mensaje = ""
+        # print(productos)
+    except Error as error:
+        mensaje = f"Problemas al alistar los productos {error}"
+    retorno = {"mensaje": mensaje, "listaProductos": productos}
+    return render(request, "cliente/productosCupcakes.html", retorno)
+
+
+def mostrarProductosGalletaCliente(request):
+    if request.user.is_authenticated:
+        return render(request, "cliente/productosGalletas.html")
+    else:
+        retorno = {"mensaje": "Debe ingresar con sus credenciales"}
+        return render(request, "login.html", retorno)
+
+
+def vistaProductosGalletaCliente(request):
+    try:
+        productos = Productos.objects.all()
+        mensaje = ""
+        # print(productos)
+    except Error as error:
+        mensaje = f"Problemas al alistar los productos {error}"
+    retorno = {"mensaje": mensaje, "listaProductos": productos}
+    return render(request, "cliente/productosGalletas.html", retorno)
+
 
 def vistaRegistrarPedido(request):
     if request.user.is_authenticated:
@@ -404,3 +478,65 @@ def mostrarPedidosCliente(request):
         mensaje = f"Problemas al alistar los pedidos {error}"
     retorno = {"mensaje": mensaje, "listaPedidos": pedidos}
     return render(request, "cliente/registrarPedido.html", retorno)
+
+
+def vistaPerfilUsuario(request):
+    return render(request, "cliente/perfilusuario.html")
+
+
+def consultarProducto(request, id):
+    try:
+        producto=Productos.objects.get(id=id)
+        mensaje=""
+        precio=int(producto.precioProducto)
+    except Error as error:
+        mensaje=f"Problemas {error}"
+        
+    retorno={"mensaje":mensaje,"producto":producto,"precio":precio}
+    return render(request,"administrador/frmEditar.html",retorno)
+
+def actualizarProductos(request):
+    idProducto=int(request.POST["idProducto"])
+    nombre=request.POST["txtNombre"]
+    precio=int(request.POST["txtPrecio"])
+    descripcion=request.POST["txtDescripcion"]
+    archivo=request.FILES.get("fileFoto", False)
+    try:
+        producto=Productos.objects.get(id=idProducto)
+        producto.nombreProducto=nombre
+        producto.precioProducto=precio
+        producto.descripcionProducto=descripcion
+        if archivo:
+            producto.imagenProducto=archivo
+        else:
+            producto.imagenProducto=producto.imagenProducto
+        producto.save()
+        mensaje="Producto actualizado correctamente"
+        return redirect("/listarProductos/")
+    except Error as error:
+        mensaje=f"Problemas al realizar el proceso de actualizar el producto {error}"
+        retorno={"mensaje":mensaje,"producto":producto}
+        return render(request,"administrador/frmEditar.html",retorno)
+    
+    
+    
+def eliminarProducto(request,id):
+    try:
+        producto=Productos.objects.get(id=id)
+        if producto.imagenProducto:
+            imagen=producto.imagenProducto.path
+            if os.path.exists(imagen):
+                os.remove(imagen)
+        producto.delete()
+        mensaje="Producto eliminado correctamente"
+    except Error as error:
+        mensaje=f"Problemas al eliminar el producto {error}"
+    retorno={"mensaje":mensaje}
+    return redirect("/listarProductos/", retorno)
+
+# def productosPorCategoria(request,catNombre):
+#     categoria = Categorias.objects.get(Categorias=catNombre)
+#     producto = Productos.objects.filter(categoria=categoria)
+#     context = {'categoria':categoria, 'producto':producto}
+#     return render(request,"cliente/productos.html",context)
+

@@ -1,21 +1,11 @@
 {% load static %}
 <img src="{%static '../static/images/logo.jpg' %}" alt="" style="width: 7%; border-radius: 50%;">
-<a href="/inicioCliente/" class="logo">D' Albas </a>
+<a href="/inicioAdministrador/" class="logo">D' Albas </a>
 
 <nav class="navbar" id="menu">
-  <a href="/inicioCliente/">Inicio</a>
-  <a href="/nosotrosCliente/">Acerca de</a>
-  <div class="dropdown">
-    <a onclick="toggleDropdown1()" class="nav-link dropdown-toggle" href="//" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Productos
-    </a>
-    <ul id="dropdown-content1" class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-      <li><a class="dropdown-item" href="/vistaProductosCliente/">Tortas de Pastillaje</a></li>
-      <li><a class="dropdown-item" href="/vistaProductoCremaCliente/">Tortas en Crema</a></li>
-      <li><a class="dropdown-item" href="/vistaProductoCupcakeCliente/">Cupcakes</a></li>
-      <li><a class="dropdown-item" href="/vistaProductoGalletaCliente/">Galletas</a></li>
-    </ul>
-  </div>
+  <a href="/inicioAdministrador/">Inicio</a>
+  <a href="/nosotrosAdministrador/">Acerca de</a>
+  <a href="/listarProductos/">Productos</a>
   <div class="dropdown">
     <a onclick="toggleDropdown2()" class="nav-link dropdown-toggle" href="//" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       Pedidos

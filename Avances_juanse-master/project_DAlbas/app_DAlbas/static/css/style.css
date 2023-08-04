@@ -508,6 +508,7 @@ div#footer a{
 /* Fin */
 
 .link-glow{
+    width: 50%;
     text-decoration: none;
 }
 .link-glow:hover {
@@ -781,10 +782,17 @@ img.grande{
     }
   }
   
-  .mensaje a {
+.mensaje a {
     color: var(--orange) !important;
   }
+.maps{
+    text-align: center;
+}
 
+.maps .mapa{
+    display: inline-block;
+    width: 150%;
+}
 
   /*Codigo nueva actualización del carousel*/
 .bg-img-1{
@@ -825,9 +833,63 @@ img.grande{
   }
 
 /**********************/
+.cartaDeFormulario{
+    position: relative;
+    width: 150%;
+    height: 530px;
+}
+.medidas{
+    background-color: var(--with);
+    position: relative;
+    width: 70%;
+    height: 100%;
+}
+
+.fotoUsuario{
+    width: 110px;
+    height: 110px;
+    float: left;
+    text-align: center;
+}
+
+.formularioPersonal{
+    background-color: var(--light-color);
+    width: 25%;
+    height: 30%;
+}
+
+.FormularioOpciones{
+    background-color: rgb(230, 253, 253);
+    width: 25%;
+    height: 72%;
+}
 
 
-/* */
+.pongoBorder{
+    position: absolute;
+    border: var(--light-color);
+    width: 25%;
+    height: 710px;
+    height: 710px;
+}
+
+.datosPersonales{
+    float: left;
+    font-size: 15px;
+    color: var(--with);
+}
+
+.anchoLinea{
+    position: absolute;
+    width: 40%;
+    left: 30%;
+}
+
+.formularioEmpresa{
+    text-align: center;
+    position: absolute;
+}
+
 
 
 /**************************************************/

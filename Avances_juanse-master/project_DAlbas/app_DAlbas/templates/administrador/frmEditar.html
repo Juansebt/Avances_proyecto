@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+
+{% block encabezado %}
+    {% include "administrador/encabezado.html" %}
+{% endblock %}
+
+{% block contenido %}
+<div class="m-5 border rounded">
+    <div class="mt-5 text-center">
+        <h4 class="fw-bold">EDITAR PRODUCTO</h4>
+    </div>
+    <br>
+    <hr>
+    <div class="d-flex justify-content-center h-100">
+        <form class="row g-3 was-validated needs-validation m-4" id="" action="/actualizarProducto/" method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            <div class="form-floating">
+                <input type="hidden" name="idProducto" id="idProducto" value="{{producto.id}}"
+                    required>
+                <br>
+            </div>
+            <div class="col-md-4">
+                <label for="txtNombre" class="form-label">Nombre del producto:</label>
+                <input type="text" class="form-control" id="txtNombre" name="txtNombre" value="{{producto.nombreProducto}}" required>
+            </div>
+            <div class="col-md-4">
+                <label for="txtPrecio" class="form-label">Precio:</label>
+                <input type="number" class="form-control" id="txtPrecio" name="txtPrecio" value="{{precio}}" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa el precio.
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="txtDescripcion" class="form-label">Descripcion del producto:</label>
+                <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion" value="{{producto.descripcionProducto}}" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa una descripcion del producto.
+                </div>
+            </div>
+            <div class="col-mb-3 mt-4">
+                <label for="fileFoto">Foto de la producto</label>
+                <input type="file" class="form-control" id="fileFoto" value="{{producto.idProducto}} " name="fileFoto" accept=".jpg">
+                <div class="invalid-feedback">Por favor, carga una foto.</div>
+            </div>
+            <div class="text-center mt-5">
+                <img class="rounded" id="imagenProducto" src="/media/{{producto.imagenProducto}}" alt="" width="300" height="300">
+            </div>
+            <div class="btn-group" role="group" style="width: 50px;">
+                    <button class="btn btn-secondary fw-bold" style="letter-spacing: 2px;">EDITAR</button>
+            </div>
+        </form>
+        <div>
+            {% if mensaje %}
+                {% if estado %}
+                    <script>
+                        Swal.fire("Registro Usuario", '{{mensaje}}', "success")
+                    </script>
+                {% else %}
+                    <script>
+                        Swal.fire("Registro Usuario", '{{mensaje}}', "warning")
+                    </script>
+                {% endif %}
+            {% endif %}
+        </div>
+        <br>
+    </div>
+</div>
+<br>
+{% endblock %}
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}

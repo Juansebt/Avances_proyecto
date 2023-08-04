@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+{% block encabezado %}
+{% include "cliente/encabezado.html" %}
+{% endblock %}
+{% block contenido %}
+{% load static %}
+<div class="cartaDeFormulario">
+    <div class="medidas">
+        <div class="pongoBorder"></div>
+        <div class="formularioPersonal">
+            <div class='fotoUsuario'>
+                <img src="{%static '../static/images/cliente.jpg' %}" alt="..." class="img-thumbnail rounded-circle">
+            </div>
+            <div class="options col-md-6 m-4 datosPersonales">
+                <h3>User:</h3>
+                <p>Juan Sebastian Laguna</p>
+            </div>
+        </div>
+        <div class="formularioEmpresa">
+            <div class="linkPag">
+                <nav class="">
+                    <ul class="nav nav-pills flex-column ulLink" style="font-size: 20px;">
+                        <li class="nav-item liLink">
+                            <a class="link-glow nav-link" href="../../templates/usuario/index.html">Ver Pasteles</a>
+                        </li>
+                        <li class="nav-item liLink">
+                            <a class="link-glow nav-link" href="javascript:void(0)" id="estadoPedido"
+                                onclick="verCategoria('estadoPedido')">Estado de Pedidos</a>
+                        </li>
+                        <li class="nav-item liLink">
+                            <a class="link-glow nav-link" href="javascript:void(0)" id="editarCuenta"
+                                onclick="verCategoria('editarCuenta')">Editar Cuenta</a>
+                        </li>
+                        <li class="nav-item liLink">
+                            <a class="link-glow nav-link" href="javascript:void(0)" id="cerrarSesion">Cerrar
+                                Sesion</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}

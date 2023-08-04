@@ -39,3 +39,21 @@ function mostrarImagen(evt) {
   $("#imagenUsuario").attr("src", url);
   $("#imagenProducto").attr("src", url);
 }
+
+
+function abrirModalEliminar(idProducto) {
+  Swal.fire({
+    title: 'Eliminar Producto',
+    text: "¿Estan seguros de eliminar?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'No',
+    confirmButtonText: 'Si'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      location.href ="/eliminarProducto/"+idProducto
+    }
+  })
+}

@@ -1,13 +1,12 @@
 {% extends "index.html" %}
 
 {% block encabezado %}
-{% include "administrador/encabezado.html" %}
+{% include "cliente/encabezado.html" %}
 {% endblock %}
 
 {% block contenido %}
-
 <section class="products" id="products" href="/productos/">
-    <h1 class="heading" name="pastillaje" >Tortas en<span>pastillaje</span></h1>
+    <h1 class="heading" name="pastillaje"><span>Galletas</span></h1>
     <div class="swiper product-slider">
         <div class="swiper-wrapper">
             {% for producto in listaProductos %}
@@ -15,7 +14,8 @@
                 <img class="tamañoImg" src="../media/{{producto.imagenProducto}}" alt="">
                 <h3>{{producto.nombreProducto}}</h3>
                 <div class="price">{{producto.descripcionProducto}}</div>
-                <div class="price">{{producto.precioProducto|floatformat:2}}</div>
+                <div class="price">{{producto.categoriaProducto.catNombre}}</div>
+                <div class="price">{{producto.precioProducto}}</div>
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -23,11 +23,10 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <a href="/consultarProducto/{{producto.id}}" class="btn"><i class="fa fa-edit text-warning"></i></a>
-                <a class="btn"><i class="fa fa-trash text-danger" onclick="abrirModalEliminar('{{producto.id}}')"></i></a>
+                <a href="" class="btn">Agregar al carro</a>
+                <a href="" class="btn">Comprar</a>
             </div>
             {% endfor %}
-            
 
 </section>
 {% endblock %}
