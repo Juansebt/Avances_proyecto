@@ -534,6 +534,18 @@ def eliminarProducto(request,id):
     retorno={"mensaje":mensaje}
     return redirect("/listarProductos/", retorno)
 
+
+#para revisar
+
+def vistaCarritoCompras(request):
+    if request.user.is_authenticated:
+        return render(request, "cliente/carrito.html")
+    else:
+        retorno = {"mensaje": "Debe ingresar con sus credenciales"}
+        return render(request, "login.html", retorno)
+
+
+
 # def productosPorCategoria(request,catNombre):
 #     categoria = Categorias.objects.get(Categorias=catNombre)
 #     producto = Productos.objects.filter(categoria=categoria)

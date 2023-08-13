@@ -56,6 +56,7 @@ urlpatterns = [
     path('consultarProducto/<int:id>/',views.consultarProducto),
     path('actualizarProducto/',views.actualizarProductos),
     path('eliminarProducto/<int:id>/',views.eliminarProducto),
+    path('vistaCarritoDeCompras/',views.vistaCarritoCompras),
     #path('productos/<str:catNombre>/', views.productosPorCategoria,name='cliente/productos.html'),
 ]
 

@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% block encabezado %}
+{% include "cliente/encabezado.html" %}
+{% endblock %}
+{% block contenido %}
+{% load static %}
+<div class="container" width="100%">
+    <h2>Carrito de compras</h2>
+    <div class="table-responsive" >
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="" alt="" width="50"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button type="button" class="btn btn-warning">Editar Producto</button>
+                <button type="button" class="btn btn-danger">Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Total: </p>
+    <button type="button" class="btn btn-success">Comprar</button>
+</div>   
+{% endblock %}
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}
